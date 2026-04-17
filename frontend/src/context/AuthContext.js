@@ -15,7 +15,12 @@ export function AuthProvider({ children }) {
     if (tokens) {
       localStorage.setItem('tokens', JSON.stringify(tokens));
       api.defaults.headers.common.Authorization = `Bearer ${tokens.access}`;
-      api.get('/auth/profile/').then((response) => setUser(response.data)).catch(() => logout());
+      api
+        .get('/auth/profile/')
+        .then((response) => setUser(response.data))
+        .catch(() => {
+          setTokens(null);
+        });
     } else {
       localStorage.removeItem('tokens');
       delete api.defaults.headers.common.Authorization;

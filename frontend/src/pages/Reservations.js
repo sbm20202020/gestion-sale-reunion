@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import ReservationCalendar from '../components/ReservationCalendar';
 import api from '../services/api';
@@ -21,10 +21,10 @@ export default function ReservationsPage() {
   });
   const [filters, setFilters] = useState({ room: '', user: '', start: '', end: '' });
 
-  const fetchReservations = () => {
+  const fetchReservations = useCallback(() => {
     const params = Object.fromEntries(Object.entries(filters).filter(([, value]) => value));
     api.get('/reservations/reservations/', { params }).then((response) => setReservations(response.data));
-  };
+  }, [filters]);
 
   useEffect(() => {
     api.get('/rooms/rooms/').then((response) => setRooms(response.data));
@@ -33,7 +33,7 @@ export default function ReservationsPage() {
 
   useEffect(() => {
     fetchReservations();
-  }, [filters.room, filters.user, filters.start, filters.end]);
+  }, [fetchReservations]);
 
   const createReservation = async (event) => {
     event.preventDefault();
