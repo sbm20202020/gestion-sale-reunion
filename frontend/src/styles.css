@@ -1,0 +1,15 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; background: #f7f9fc; color: #1f2937; }
+a { color: #1d4ed8; text-decoration: none; margin-right: 1rem; }
+.container { max-width: 1100px; margin: 1rem auto; padding: 0 1rem; }
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #111827; color: #fff; }
+.navbar a { color: #e5e7eb; }
+.brand { font-weight: bold; font-size: 1.2rem; }
+.card { background: #fff; border-radius: 8px; padding: 1rem; box-shadow: 0 2px 8px rgba(17, 24, 39, 0.08); }
+input, select, button { display: block; width: 100%; margin: 0.5rem 0; padding: 0.6rem; }
+button { background: #1d4ed8; color: #fff; border: none; cursor: pointer; border-radius: 4px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+.room-card { border: 1px solid #e5e7eb; border-radius: 6px; padding: 0.75rem; }
+.filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.5rem; }
+.actions a { display: inline-block; margin-right: 1rem; }
+.error { color: #b91c1c; }
